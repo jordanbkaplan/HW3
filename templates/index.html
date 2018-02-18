@@ -5,8 +5,14 @@
 </div>
 
 <div>
-<form method="POST">
+<form method="POST" action="http://localhost:5000/">
 	{{ form.hidden_tag() }}
+
+	<div>
+	{% for message in get_flashed_messages() %}
+	    <strong>{{ message }}</strong>
+	{% endfor %}
+	</div>
 	{{ form.text.label }} {{ form.text() }}
 	{{ form.username.label }} {{ form.username() }}
     {{ form.display_name.label }} {{ form.display_name() }}
@@ -17,10 +23,5 @@
 <br>
 <strong><p>NOTE: Anything you submit here will be visible to instructors / the entire class / the public. Don't put anything here that you wouldn't tell the whole class. Fair warning.</strong> <i>(Jackie can also delete anything and remove this from the internet...)</i></p><br>
 
-<div>
-{% for message in get_flashed_messages() %}
-    <strong>{{ message }}</strong>
-{% endfor %}
-</div>
 
 {% endblock %}
